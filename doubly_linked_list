@@ -1,0 +1,258 @@
+/*Program to insert,delete,search
+    element  using doubly link list
+    -----------------------------------------------------
+    Author:Dharmendra mourya
+    Version:1.0
+    Date:25/07/2017
+ */
+#include "stdio.h"
+#include "stdlib.h"
+#include "conio.h"
+
+//defining structure of node
+typedef struct node
+{
+	//stores integer data
+	int data;
+	//to store previous element address
+	struct node* next;
+	//to store next element address
+	struct node* prev;
+}node;
+//At starting point node must be null
+node *head=NULL;
+//below int is for global counter
+int z=0;
+//function to generate new node
+node *getnewnode(int*);
+//function for inserting new node
+void insert();
+//function to display result
+void display();
+//displaying reverse of link list
+void reverse_display();
+int insert_nth_position(int*);
+int delete_nth_position(int*);
+//program execution starts here.
+int main()
+{
+	//variable to store user input
+int choice;
+//again is a label 
+again:printf("\tChoose from below:\n");
+	printf("\t1.Creation&Insertion\n");
+	printf("\t2.Deletion at nth position\n");
+	printf("\t3.Insertion at nth position\n");
+	printf("\t4.Display Result\n");
+	//repeat is label
+	repeat:printf("\tEnter your choice:");
+	//taking user input
+	scanf("%d",&choice);
+	switch(choice)
+	{
+	case 1:
+	{
+			insert();
+			goto repeat;//goto the label repeat
+			break;
+	}
+	case 2:
+	{
+	/*taking user input to delete nth   
+	    position element*/
+		int s;
+		printf("\tEnter position to delete:");
+		scanf("%d",&s);
+		delete_nth_position(&s);
+		goto repeat;
+		break;
+ 	}
+	case 3:
+    {
+    	/*taking user input to delete nth   
+	    position element*/
+    	int n;
+		printf("\tEnter position to insert:");
+		scanf("%d",&n);
+		insert_nth_position(&n);
+		goto repeat;
+		break;
+     }
+	case 4:
+	{
+	    display();//displaying result
+	    printf("\n");
+	    goto repeat;
+		break;
+	}
+	default:
+	{
+		printf("\tInvalid input");
+		clrscr();
+		goto again;
+	}
+  }
+	return 0;
+}
+//creation&insertion method
+void insert()
+{
+	//point to node variable
+	node *temp1,*support;
+	//loop for asking user input n times
+	char ans='y';
+	while(ans=='y')
+	{
+	  //dynamically allocate node
+ 	 temp1=(node*)malloc(sizeof(node));
+  	printf("\tEnter value of node\n");
+  	scanf("%d",&temp1->data);
+	  temp1->next=NULL;
+  	temp1->prev=NULL;
+  	//chech head is null or not
+	  if(head==NULL)
+  	{
+		head=temp1;
+	
+	  }
+	else
+	{
+		support=head;
+		while(support->next!=NULL)
+		{
+			support=support->next;
+		
+		}
+		temp1->prev=support;
+		support->next=temp1;
+		
+	 }
+		printf("\tDo you wish to continue ?\n");
+	scanf("%s",&ans);
+	/*global counter variable increases for
+	  each traverse*/
+	  z++;
+		}
+		
+   /*  temp1->next=head;
+		head->prev=temp1;
+	    printf("%d",z);*/
+}
+//display
+void display()
+{
+	node *temp1;
+	temp1=head;
+	printf("\n");
+	while(temp1!=NULL)
+	{
+		printf("%d\t",temp1->data);
+		temp1=temp1->next;
+	}
+	printf("\n");
+}
+//display reverse
+void reverse_display()
+{
+	node *temp1;
+	temp1=head;
+	//printf("\n");
+	while(temp1->next!=NULL)
+	{
+		//printf("%d\t",temp1->data);
+		temp1=temp1->next;
+	}
+	printf("\n");
+	printf("\tReverse in order\n");
+	while(temp1!=NULL)
+	{
+		printf("%d\t",temp1->data);
+		temp1=temp1->prev;
+	}
+}
+//insert at nth position
+int insert_nth_position(int *n)
+{
+	node *temp1,*temp2,*temp3;
+	int newvalue;
+	temp1=head;
+	printf("\tEnter value for new node\n");
+	scanf("%d",&newvalue);
+	temp2=getnewnode(&newvalue);
+	if(*n==1)
+	{
+		temp2->next=head;
+		head->prev=temp2;
+		head=temp2;
+	}
+	else if(z==*n||z+1==*n)
+	{
+		printf("hey");
+		while(temp1->next!=NULL)
+		{
+	temp1=temp1->next;
+		}
+		temp1->next=temp2;
+			temp2->prev=temp1;
+	}
+	else
+	{
+		for(int i=0;i<*n-2;i++)
+		{
+			temp1=temp1->next;
+		}
+		temp3=temp1->next;
+		temp1->next=temp2;
+		temp2->prev=temp1;
+		temp2->next=temp3;
+		temp3->prev=temp2;
+	}
+	z++;
+}
+//delete_nth_position
+int delete_nth_position(int *s)
+{
+	node *temp1,*temp2,*temp3;
+	int newvalue;
+	temp1=head;
+	if(*s==1)
+	{
+		temp2=temp1->next;
+		temp2->prev=NULL;
+		head=temp2;
+		free(temp1);
+	}
+	else if(z==*s)
+	{
+			while(temp1->next!=NULL)
+		{
+			temp1=temp1->next;
+		}
+		temp2=temp1->prev;
+			temp2->next=NULL;
+			free(temp1);
+	}
+	else
+	{
+		for(int i=0;i<*s-2;i++)
+		{
+			temp1=temp1->next;
+		}
+		temp2=temp1->next;
+		temp2->prev=NULL;
+		temp3=temp2->next;
+		temp1->next=temp3;
+		temp3->prev=temp1;
+		free(temp2);
+	}
+	z--;
+}
+//code for creating new node
+node* getnewnode(int *s)
+{
+node *temp=(node*)malloc(sizeof(node));
+temp->data=*s;
+temp->next=NULL;
+temp->prev=NULL;
+return temp;
+}
