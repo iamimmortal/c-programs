@@ -1,0 +1,38 @@
+#include<stdio.h>
+void main()
+{
+	FILE *f;
+	int x;
+	long z;
+	f=fopen("numbers.txt","r");
+	if(f==NULL)
+	{
+		printf("File not exist");
+	}
+	else
+	{
+	if(!feof(f))
+	{
+		z=ftell(f);
+			printf("ftell:%d\n",z);
+	
+		printf("Hey data found\n");
+			while((x=getw(f))!=EOF)
+		{
+			printf("%d\t",x);
+		}
+		printf("\n");
+			//rewind(f);
+			fseek(f,-10L,1);
+			z=ftell(f);
+			printf("ftell:%d\n",z);
+	}
+	else
+	{
+		printf("End of file no data");
+	
+		
+	}
+	}
+	fclose(f);
+	}

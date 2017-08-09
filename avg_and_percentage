@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{ 
+int eng,hin,mat,sci,his,agg;
+printf("Enter 5 subject marks");
+scanf("%d%d%d%d%d",&eng,&hin,&mat,&sci,&his);
+agg=eng hin sci mat his +5/;
+printf("Agg is=%d",agg);
+getch();
+}

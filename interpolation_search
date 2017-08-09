@@ -1,0 +1,84 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	int a[15],i,n,j,t,c=0,m=0,mid=-1,x;
+	fflush(stdin);
+	printf("Enter array size\n");
+	scanf("%d",&n);
+	//code for taking user input
+	for(i=0;i<n;i++)
+	{
+		printf("Enter element for position  %d:",i+1);
+		scanf("%d",&a[i]);
+		}
+		//original array
+			printf("\n");
+			for(i=0;i<n;i++)
+	{
+		printf("%d\t",a[i]);
+	}
+	printf("\n");
+		printf("\n");
+			//count array lenght
+	for(i=0;i<n;i++)
+	{
+		c++;
+	}
+	//	printf("%d",c);
+		//code for sorting
+	for(i=0;i<n-1;i++)
+	{
+	for(j=0;j<(n-i-1);j++)
+	/*here j is alway 1 less than i except when i=0 so that j move 1 time less at sorting of eevery element and that means n-1 time when i=0 and n-i-1 else*/
+	{
+		if(a[j]>a[j+1])
+		{
+			t=a[j];
+			a[j]=a[j+1];
+			a[j+1]=t;
+		}
+	}
+		}
+		//printing sorted array
+			printf("\n");
+		for(i=0;i<n;i++)
+	{
+		printf("%d\t",a[i]);
+	}
+	c=c-1;
+	//code for binary search
+	printf("\n");
+	printf("Enter no to find:");
+	scanf("%d",&x);
+	mid=m+((c-m)/(a[c]-a[m]))*(x-a[m]);
+	//not less than lower bond
+	printf("mid:%d\n",mid);
+		printf("upperbound:%d\n",c);
+	if(x<a[m]||x>a[c-1]||c==m)
+	{
+	
+		printf("value not present in list");
+	}
+	// if value greater  than midpoint
+	repeat:
+	mid=m+((c-m)/(a[c]-a[m]))*(x-a[m]);
+		printf("mid:%d\n",mid);
+	 if(a[mid]<x)
+	{
+		m=mid+1;
+		goto repeat;
+	}
+		//value less  than midpoint
+	else if(a[mid]>x)
+	{
+		c=mid-1;
+		
+		goto repeat;
+	}
+	else if(a[mid]==x)
+	{
+		printf("Value found at location %d",mid);
+	}
+}

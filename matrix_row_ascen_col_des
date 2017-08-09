@@ -1,0 +1,162 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	int r,c,a[5][5],b[5][5],i,j,k,t;
+	printf("Enter rows of matrix:\n");
+	       scanf("%d",&r);
+	       	printf("Enter column of matrix:\n");
+	       scanf("%d",&c);
+	       //input from user
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("Enter value for position %d,%d:",i,j);
+	       		scanf("%d",&a[i][j]);
+	       	//	printf("%d\t",a[i][j]);
+	       	b[i][j]=a[i][j];
+	       		}
+	       }
+	       printf("\n");
+	       //value enter by user are
+	       printf("Original value by user:\n");
+	        for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("%d\t",a[i][j]);
+	       		
+	       		}
+	       		printf("\n");
+	       }
+	       // sorting code
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		for(k=j+1;k<c;k++)
+	       		{
+	       			if(a[i][j]>a[i][k])
+	       			{
+	       				t=a[i][k];
+	       				a[i][k]=a[i][j];
+	       				a[i][j]=t;
+	       			}
+	       			}
+	       		//	printf("%d\t",a[i][j]);
+	       		}
+	       			
+	       }
+	       
+	       //sorted matrix by row
+	     printf("\n");
+	       printf("Matrix after sorting by row ascending is:\n");
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("%d\t",a[i][j]);
+	       		
+	       		}
+	       		printf("\n");
+	       }
+	       // decending row wise
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		for(k=j+1;k<c;k++)
+	       		{
+	       			if(a[i][j]<a[i][k])
+	       			{
+	       				t=a[i][k];
+	       				a[i][k]=a[i][j];
+	       				a[i][j]=t;
+	       			}
+	       			}
+	       		//	printf("%d\t",a[i][j]);
+	       		}
+	       			
+	       }
+	       
+	       //sorted matrix by row
+	     printf("\n");
+	       printf("Matrix after sorting by row is:\n");
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("%d\t",a[i][j]);
+	       		
+	       		}
+	       		printf("\n");
+	       }
+	       //ascending column wise
+	       	       // sorting code
+	       for(j=0;j<c;j++)
+	       {
+	       	for(i=0;i<r;i++)
+	       	{
+	       		for(k=i+1;k<r;k++)
+	       		{
+	       			if(b[i][j]>b[k][j])
+	       			{
+	       				t=b[k][j];
+	       				b[k][j]=b[i][j];
+	       				b[i][j]=t;
+	       			}
+	       			}
+	       		//	printf("%d\t",a[i][j]);
+	       		}
+	       			
+	       }
+	       
+	       //sorted matrix by row
+	     printf("\n");
+	       printf("Matrix after sorting by ascending column is:\n");
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("%d\t",b[i][j]);
+	       		
+	       		}
+	       		printf("\n");
+	       }
+	       
+	        //decending column wise
+	       	       // sorting code
+	       for(j=0;j<c;j++)
+	       {
+	       	for(i=0;i<r;i++)
+	       	{
+	       		for(k=i+1;k<r;k++)
+	       		{
+	       			if(b[i][j]<b[k][j])
+	       			{
+	       				t=b[k][j];
+	       				b[k][j]=b[i][j];
+	       				b[i][j]=t;
+	       			}
+	       			}
+	       		//	printf("%d\t",a[i][j]);
+	       		}
+	       			
+	       }
+	       
+	       //sorted matrix by row
+	     printf("\n");
+	       printf("Matrix after sorting by decending column is:\n");
+	       for(i=0;i<r;i++)
+	       {
+	       	for(j=0;j<c;j++)
+	       	{
+	       		printf("%d\t",b[i][j]);
+	       		
+	       		}
+	       		printf("\n");
+	       }
+	       
+}

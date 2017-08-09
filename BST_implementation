@@ -1,0 +1,176 @@
+#include<stdio.h>
+
+//struct node for tree
+typedef struct bstnode
+{
+	short int data;
+	struct bstnode* left;
+	struct bstnode* right;
+}bstnode;
+	bstnode* root=NULL;
+//function declaration
+//for newnode memory allocation
+bstnode* GetNewNode(int*);
+//for insert function
+int insert(int);
+//display function
+void display();
+//search function
+void search(int *s);
+//main function
+void main()
+{
+	int choice;
+	printf("Select from below");
+	printf("\n1.Insert Into Tree\n");
+	printf("2.Display\n");
+	printf("3.Search\n");
+	ask:printf("Enter your choice:");
+	scanf("%d",&choice);
+	
+ switch (choice)
+ {
+ 	case 1:
+ 	{
+ 			int newval;
+	printf("Enter value:");
+	scanf("%d",&newval);
+//	root=insert(root,newval);
+insert(newval);
+	goto ask;
+	break;
+ 	}
+ 	case 2:
+ 	{
+ 		display();
+ 		goto ask;
+ 		break;
+ 	}
+ 		case 3:
+ 	{
+ 		int s;
+ 		printf("Enter value to search:");
+ 		scanf("%d",&s);
+ 		search(&s);
+ 		goto ask;
+ 		break;
+ 	}
+ 	default:
+ 	{
+ 		printf("\nWrong input!!!!!!");
+ 	}
+ }
+}
+// insert function declaration
+/*int insert(bstnode *root,int newval)
+{
+	if(root==NULL)
+	{
+		root=GetNewNode(&newval);
+	}
+	else if(newval<=root->data)
+	{
+		root->left=insert(root->left,newval);
+	}
+	else 
+	{
+	root->right=insert(root->right,newval);
+	}
+	return root;
+}*/
+int insert(int newval)
+{
+	bstnode *temp1,*temp2;
+	temp1=GetNewNode(&newval);
+	if(root==NULL)
+	{
+		root=temp1;
+	}
+		
+	else
+	{
+			temp2=root;
+	 if(newval<=temp2->data)
+	{
+		//printf("Hey");
+		while(temp2->left!=NULL)
+		{
+			temp2=temp2->left;
+		}
+		temp2->left=temp1;
+	}
+	else 
+	{
+		while(temp2->right!=NULL)
+		{
+			temp2=temp2->right;
+		}
+		temp2->right=temp1;
+}
+}
+}
+//displaying result
+void display()
+{
+		bstnode *temp1;
+		//printf("Hey");
+		temp1=root;
+		printf("\nLeft:");
+		while(temp1->left!=NULL)
+		{
+			printf("%d\t",temp1->data);
+			temp1=temp1->left;
+		}
+		printf("%d",temp1->data);
+		temp1=root->right;
+		printf("\nRight:");
+		while(temp1->right!=NULL)
+		{
+			printf("%d\t",temp1->data);
+			temp1=temp1->right;
+		}
+		printf("%d",temp1->data);
+		printf("\n");
+}
+//memory allocation
+bstnode* GetNewNode(int *x)
+{
+	bstnode* newnode=(bstnode*)malloc(sizeof(bstnode));
+	newnode->data=*x;
+	newnode->left=NULL;
+	newnode->right=NULL;
+	return newnode;
+}
+//search function definition
+void search(int *s)
+{
+	bstnode *temp1;
+	if(root==NULL)
+	{
+	printf("Error root node not found!!\nl");
+	}
+	if(root->data==*s)
+	{
+		printf("Data found at root node\n");
+	}
+	else
+	{
+		temp1=root;
+		if(*s<=root->data)
+		{
+			while(temp1->left!=NULL)
+			{
+				if(temp1->data==*s)
+				{
+					printf("Value found at left of tree\n");
+				}
+				else
+				temp1=temp1->left;
+			}
+			if(temp1->data==*s)
+			{
+				printf("Data found");
+			}
+		}
+	}
+}

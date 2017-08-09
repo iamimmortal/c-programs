@@ -1,0 +1,152 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+//defining struct node
+typedef struct node
+{
+	char c;
+	struct node* next;
+}node;
+node *head=NULL;
+//head=NULL;
+void insert();
+//void delete_starting();
+int delete_nth_position(int*);
+int insert_nth_position(int*);
+void display();
+int main()
+{
+	int choice;
+again:printf("\tChoose from below:\n");
+	printf("\t1.Creation&Insertion\n");
+	printf("\t2.Deletion at nth position\n");
+	printf("\t3.Insertion at nth position\n");
+	printf("\t4.Display Result\n");
+	repeat:printf("\tEnter your choice:");
+	scanf("%d",&choice);
+	switch(choice)
+	{
+	case 1:
+	{
+			insert();
+			goto repeat;
+			break;
+	}
+	case 2:
+	{
+		int s;
+		printf("\tEnter position to delete:");
+		scanf("%d",&s);
+		delete_nth_position(&s);
+		goto repeat;
+		break;
+	}
+	case 3:
+    {	int n;
+		printf("\tEnter position to insert:");
+		scanf("%d",&n);
+		insert_nth_position(&n);
+		goto repeat;
+		break;
+    }
+	case 4:
+	{
+	    display();
+	    goto repeat;
+		break;
+	}
+		default:
+		{
+		printf("\tInvalid input");
+		clrscr();
+		goto again;
+		}
+	}
+	return 0;
+}
+//creation and insertion
+void insert()
+{
+	node *temp,*support;
+	char ans='y';
+	//char c;
+	while(ans=='y'){
+	printf("\tEnter char:");
+	temp=(node*)malloc(sizeof(node));
+	//fflush(stdin);
+	scanf("%s",&temp->c);
+		temp->next=NULL;
+	if(head==NULL)
+	{
+			head=temp;
+	}
+else{
+	support=head;
+	while(support->next!=NULL)
+	{
+		support=support->next;
+	}
+	support->next=temp;
+}
+printf("\tDo you want to continue ?\n");
+scanf("%s",&ans);
+}
+}
+//displaying list
+	void display(){
+		node *temp;
+		temp=head;
+		while(temp!=NULL)
+		{
+			printf("%c\t",temp->c);
+			temp=temp->next;
+		}
+		printf("\n");
+	}
+	int delete_nth_position(int *s)
+	{
+		node* temp,*temp2;
+		temp=head;
+		int i;
+		if(*s==1)
+		{
+			head=temp->next;
+			free(temp);
+		}
+		else
+		{
+		for(i=0;i<*s-2;i++)
+		{
+			temp=temp->next;
+		}
+		temp2=temp->next;
+		temp->next=temp2->next;
+		free(temp2);
+		}
+	}
+	//insert nth ppsition
+	int insert_nth_position(int*n)
+ {
+ 	node* temp1,*temp2,*temp3;
+ 	int i;
+ 	temp1=head;
+ 	temp2=(node*)malloc(sizeof(node));
+ 	printf("\tEnter value of these node:");
+ 	scanf("%s",&temp2->c);
+ 	temp2->next=NULL;
+ 	if(*n==1)
+ 	{
+ 		temp2->next=temp1;
+ 		head=temp2;
+ 	}
+ 	else
+ 	{
+ 	for(i=0;i<*n-2;i++)
+ 	{
+ 		temp1=temp1->next;
+ 	}
+ 	temp3=temp1->next;
+ 	temp1->next=temp2;
+ 	temp2->next=temp3;
+ }
+ }

@@ -1,0 +1,46 @@
+#include<stdio.h>
+void main()
+{
+	int x,y,i,j,m,n;
+	char name[40],fname[15],lname[15];
+	printf("Enter your first  name\n");
+	scanf("%s",fname);
+	printf("Enter your last name\n");
+	scanf("%s",lname);
+	x=strlen(fname);
+	y=strlen(lname);
+	printf("%d",y);
+	if(x>y)
+	{
+		for(i=0,j=x+1;fname[i]!='\0';i++,j++)
+		{
+			name[i]=fname[i];
+			name[j]=lname[i];
+		}
+		name[x]=' ';
+		printf("The reverse is\n");
+		n=strlen(name);
+		
+			for(i=n-1;i>=0;i--)
+		{
+		printf("%c",name[i]);
+		}
+	}
+	else
+	{
+		for(i=0,j=x+1;lname[i]!='\0';i++, j++)
+		{
+			name[i]=fname[i];
+			name[j]=lname[i];
+		}
+	//	name[x]=' ';
+		printf("The reverse is\n");
+		n=strlen(name);
+			for(i=0;i<=n-1;i++)
+		{
+			//printf("*");
+		printf("%c",name[i]);
+		
+		}
+	}
+	}

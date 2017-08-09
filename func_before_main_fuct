@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+void first();
+void last();
+#pragma startup first 105
+#pragma startup last 
+#pragma exit last
+#pragma exit first 105
+
+void main()
+{
+	printf("This is the main method/function\n");
+}
+
+void first()
+{
+	printf("This is the second function\n");
+}
+
+void last()
+{
+	printf("This is the last function");
+}

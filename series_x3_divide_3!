@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+float series(int,int);
+int fact(int);
+int power(int,int);
+int main()
+{
+	int x,s;
+	float ans;
+	printf("Enter value of x\n");
+	 scanf("%d" ,&x);
+	  printf("Enter lenght of series\n");
+	   scanf("%d" ,&s);
+	//  printf("hey");
+	    ans=series(x,s);
+	     printf("The value of given series is:%f",ans);
+	}
+	
+    float series(int x, int s)
+    {
+    	double sum=0,term;
+    	int sign=1;
+    	int p=1,i;
+    		
+    	for(i=0;i<s;i++,p=p+2)
+    	{
+    		float a,b;
+    		b=(fact(p));
+    		a=(power(x,p));
+    		term=a/b;
+    		printf("%lf\t",term);
+    		sum+=sign*term;
+    		
+    		sign=-sign;
+    		}
+    			
+    		return sum;
+    	
+    	//	printf("%");
+    	}
+    	//for factorial
+    	int fact(int p)
+    	{
+    		if(p==0||p==1)
+    		{
+    			return 1;
+    			}
+    			else
+    			{
+    				p=p*fact(p-1);
+    				//printf("%d\t",p);
+    		return p;
+    			}
+    	}
+    	//for power of x
+    	int power(int x, int p)
+    	{
+    		if(p==0)
+    		{
+    			return 1;
+    		}
+    		else
+    		{
+    			//printf("%d\t",x^p);
+    		//	printf("%f",pow(x,p));
+    			return pow(x,p);
+    		}
+    		
+    	}

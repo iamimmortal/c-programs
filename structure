@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<conio.h>
+
+struct student
+{
+	int no;
+	char name[15];
+	int hin;
+	int math;
+	int eng;
+};
+
+void main()
+{
+	struct student s[2];
+	int i, j;
+	float avg[3], per[3];
+	int sum = 0;
+	printf("Enter Student details:\n");
+
+	for (i = 0; i < 2; i++)
+	{
+		printf("Enter Id no of student %d\n", i + 1);
+		scanf("%d", &s[i].no);
+		printf("Enter name of student\n");
+		scanf("%s", s[i].name);
+		for (j = 0; j < 1; j++)
+		{
+
+			printf("Enter marks of math\n");
+			scanf("%d", &s[j].math);
+			printf("Enter marks of English\n");
+			scanf("%d", &s[j].eng);
+			printf("Enter marks of Hindi\n");
+			scanf("%d", &s[j].hin);
+	sum = (s[j].math + s[j].eng + s[j].hin);
+			//printf("%d",sum);
+			avg[i] = (sum) / 3;
+			per[i] = (sum/300) *100;
+			printf("%f",per[i]);
+		}
+	}
+	for(i = 0; i < 2;i++)
+	{
+		printf("The average marks and percentage of %s is %f & %f\n", s[i].name, avg[i], per[i]);
+	}
+}

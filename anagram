@@ -1,0 +1,54 @@
+#include "stdio.h"
+#include<conio.h>
+int anagram(char*,char*,int);
+int main()
+{
+char word1[25],word2[25];
+int flag;
+printf("Enter first word:");
+gets(word1);
+printf("\n");
+printf("Enter second word:");
+gets(word2);
+flag=anagram(word1,word2,strlen(word1));
+if(flag==1)
+{
+printf("Anagram");
+}
+else
+{
+printf("words are not anagram");
+}
+}
+//calling anagram methods
+int anagram(char* word1,char* word2,int size)
+{
+short int c;
+short int count1[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+short int count2[]={ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+//for first word
+//printf("%d",count1[20]);
+for(c=0;/*word1[c]!='\0'*/c<size;c++)
+{
+//increasing count of character appearence 
+count1[word1[c]-97]++;
+}
+printf("\n");
+//for second word
+for(c=0;/*word2[c]!='\0'*/c<size;c++)
+{
+//increasing count of character appearence 
+count2[word2[c]-97]++;
+//printf("%d\t",count2[word2[c]-'a']);
+}
+
+c=0;
+for(c=0;c<26;c++)
+{
+if(count1[c]!=count2[c])
+{
+return 0;
+}
+}
+return 1;
+}

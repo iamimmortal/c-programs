@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	float p,per;
+	printf("Enter your cgpa:\n");
+	scanf("%f",&p);
+	if(p<7)
+	{
+		per=(7.1*p)+12;
+		printf("Your equivalent percentage is:%f",per);
+		}
+		else
+	{
+		per=(7.4*p+12);
+		printf("Your equivalent percentage is:%f",per);
+		}
+	}

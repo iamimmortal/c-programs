@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	char name[20];
+	int i,l;
+	printf("Enter your name :\n");
+	scanf("%s",name);
+	l=strlen(name);
+	for(i=l-1;i>=0;i--)
+	{
+      printf("%c",name[i]);
+
+     }
+}

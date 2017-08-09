@@ -1,0 +1,25 @@
+#include<stdio.h>
+ int main()
+  {
+  	int i,j,c=2,n;
+  	int sum=0;
+  	printf("Enter number of range\n");
+  	scanf("%d",&n);
+  	for(i=2;i<=n;)
+  	{
+  		for(j=2;j<=c-1;j++)
+  		{
+  			if(c%j==0)
+  			break;
+  		}
+  		if(j==c)
+  		{
+  			printf("%d\n",c);
+  			sum=sum+c;
+  			i++;
+  		}
+  		c++;
+  	}
+  	printf("\n%d",sum);
+  	return 0;
+  }

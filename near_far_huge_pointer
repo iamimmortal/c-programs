@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<conio.h>
+ int main()
+ {
+ 	char near *ptr=(char *)0xFFFA;
+ 	for(i=0;i<10;i++)
+ 	{
+ 	printf("%p\n",ptr);
+ 	ptr++;
+ 	}
+ 	return 0;
+ }

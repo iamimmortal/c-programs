@@ -1,0 +1,152 @@
+#include<stdio.h>
+void takefromfile();
+void struct_file();
+int struct_file_print();
+void file();
+//user defined data struct
+struct book
+{
+	int id;
+	char name[15];
+	int pages;
+	int price;
+	
+};
+int main()
+{
+	int cont;
+	again:printf("press 1 to continue:\n");
+	scanf("%d",&cont);
+	if(cont==1)
+	{
+		file();
+		}
+	else
+	{
+	printf("Wrong input pls \n");
+	goto again;
+	}
+	
+}
+//accessing file function
+void file()
+{
+	FILE *fpall,*fpprime;
+	int n;
+	int k;
+	int i,j,c=2;
+printf("Enter range of prime number:\n");
+scanf("%d",&n);
+fpprime=fopen("prime","w");
+for(i=2;i<=n;)
+{
+	for(j=2;j<=c-1;j++)
+	{
+		if(c%j==0)
+		break;
+	}
+	if(c==j)
+	{
+		putw(c,fpprime);
+		i++;
+	}
+	c++;
+}
+fclose(fpprime);
+printf("\nPrime numbers are entered into a filename fpprime\n");
+askagain:printf("press 1 to display it from file:");
+scanf("%d",&k);
+if(k==1)
+{
+	takefromfile();
+}
+else
+{
+	printf("\nwrong input try again\n");
+	goto askagain;
+}
+}
+
+//takefrom file function
+ 
+ void takefromfile()
+ {
+ 	FILE *fpprime;
+ 	int c,k;
+ 	printf("\nThe prime numbers are:\n");
+ 	fpprime=fopen("prime","r");
+ 	while((c=getw(fpprime))!=EOF)
+ 	{
+ 		printf("%d\n",c);
+ 	}
+ mkright:printf("prees 1 to go for structure:\n");
+ 	scanf("%d",&k);
+ if(k==1)
+ {
+ 	struct_file();
+ }
+ else
+ {
+ 	printf("wrong input pls\n");
+ 	goto mkright;
+ }
+ }
+ 
+ //for function struct_file
+ 
+ void struct_file()
+ {
+ 	int n,i;
+ 	FILE *fpbook;
+ 	struct book b[10];
+ 	printf("Following provided detail is entered into a file\n");
+ 	printf("\nEnter no of books:");
+ 	scanf("%d",&n);
+ 	fpbook=fopen("book","w");
+ 	for(i=0;i<n;i++)
+ 	{
+ 	printf("Enter detail for book %d\n",i+1);
+ 		printf("\nEnter id:");
+ 		scanf("%d",&b[i].id);
+ 		putw(b[i].id,fpbook);
+ 		
+ 			printf("\nEnter name:");
+ 		scanf("%s",b[i].name);
+ 			fputs(b[i].name,fpbook);
+ 			
+ 			printf("\nEnter number of pages:");
+ 		scanf("%d",&b[i].pages);
+ 			putw(b[i].pages,fpbook);
+ 			
+ 			printf("\nEnter price:");
+ 		scanf("%d",&b[i].price);
+ 			putw(b[i].price,fpbook);
+ 			
+ 	}
+ 	fclose(fpbook);
+ 	printf("\nDetailed entered into file fpbook successfully!\n");
+ 	//asking for confirmation to goto next function
+ 	 printbook:printf("prees 1 to go for printing book detail from file:\n");
+ 	 int k;
+ 	scanf("%d",&k);
+ if(k==1)
+ {
+ 	printf("\nThe details of the book are:\n");
+fpbook=fopen("book","r");
+for(int i=0;i<n;i++)
+{
+	printf("\nBook no %d\n",i+1);
+	printf("The id is:%d\n", b[i].id );
+	printf("The name is:%s\n", b[i].name );
+	printf("The pages is:%d\n", b[i].pages );
+	printf("The price is:%d\n", b[i].price );
+	printf("\n");
+}
+ }
+ else
+ {
+ 	printf("wrong input pls\n");
+ 	goto printbook;
+ }
+ }
+ 

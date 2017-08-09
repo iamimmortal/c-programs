@@ -1,0 +1,27 @@
+#include "stdio.h"
+int fact(int *);
+int main()
+{
+	int n,*p;
+	printf("\nEnter number to calculate factorial:");
+	scanf("%d",&n);
+	p=&n;
+	int s=fact(p);
+	printf("The factorial of %d is:%d",n,s);
+}
+int fact(int *p)
+{
+	int fa=1;
+	if(*p==0||*p==1)
+	{
+		return fa;
+	//	printf("The factorial of %d is:1",*p);
+		
+	}
+	else
+	{
+		//int s=*p;
+		return fa=fa*fa(p);
+//printf("The factorial of %d is:%d",*p,fact);
+	}
+}

@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<conio.h>
+int add(int);
+int mul(int);
+void main()
+{
+	FILE *f1,*f2,*f3;
+	int n,x,temp,sum=0,b,i;
+	int c;
+	//arithmatic using files
+	//strings using files
+	printf("Select your option\n");
+	printf("Enter 1 for Addition\n");       printf("Enter 2 for Substraction\n");
+		printf("Enter 3 for multiplication\n");
+			printf("Enter 4 for division\n");
+			scanf("%d",&n);
+			switch(n)
+			{
+				case 1:
+				printf("Enter numbers of element\n");
+				scanf("%d",&temp);
+			temp=add(temp);
+			printf("The addition is:%d",temp);
+				break;
+			case 2:
+			printf("Enter two numbers\n");
+			scanf("%d%d",&n,&x);
+			temp=n-x;
+			printf("The substraction is:%d",temp);
+			break;
+			case 3:
+				printf("Enter numbers of element\n");
+				scanf("%d",&temp);
+			b=mul(temp);
+			printf("The multiplication  is:%d",b);
+				break;
+				case 4:
+			printf("Enter two numbers\n");
+			scanf("%d%d",&n,&x);
+			temp=n/x;
+			printf("The division is:%d",temp);
+			break;
+				default:
+				{
+					printf("invalid choice");
+				}
+			}
+}
+				int add(int x)
+				{
+					
+					int i,z,c,sum=0;
+					FILE *f1;
+					f1=fopen("addition","w");
+					printf("Enter elements\n");
+					for(i=1;i<=x;i++)
+					{
+						printf("Enter value %d:",i);
+						scanf("%d",&z);
+					putw(z,f1);
+					}
+					fclose(f1);
+					f1=fopen("addition","r");
+				if(!feof(f1))
+				{
+				while((c=getw(f1))!=EOF)
+				{
+					sum=sum+c;
+					}
+						fclose(f1);
+					return sum;
+				}
+				else
+				{
+					printf("No data in file\n");
+				}
+				}
+				//multiplication
+					int mul(int x)
+				{
+					
+					int i,z,c,mul=1;
+					FILE *f1;
+					f1=fopen("multiplication","w");
+					printf("Enter elements\n");
+					for(i=1;i<=x;i++)
+					{
+						printf("Enter value %d:",i);
+						scanf("%d",&z);
+					putw(z,f1);
+					}
+					fclose(f1);
+					f1=fopen("multiplication","r");
+				if(!feof(f1))
+				{
+				while((c=getw(f1))!=EOF)
+				{
+					mul=mul*c;
+					}
+						fclose(f1);
+					return mul;
+				}
+				else
+				{
+					printf("No data in file\n");
+				}
+				}
+			
+	

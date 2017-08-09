@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	int a[15],i,n,j,x;
+	fflush(stdin);
+	printf("Enter array size\n");
+	scanf("%d",&n);
+	//code for taking user input
+	for(i=0;i<n;i++)
+	{
+		printf("Enter element for position  %d:",i+1);
+		scanf("%d",&a[i]);
+		}
+		//original array
+			printf("\n");
+			for(i=0;i<n;i++)
+	{
+		printf("%d\t",a[i]);
+	}
+	//user input to find that elemnt
+	printf("\n");
+	printf("Enter no to find:");
+	scanf("%d",&x);
+	//code for linear search
+	for(i=0;i<n;i++)
+	{
+		if(a[i]==x)
+		{
+			printf("location of element found at:%d",i);
+		}
+		}
+}

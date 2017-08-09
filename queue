@@ -1,0 +1,108 @@
+#include<stdio.h>
+int isfull();
+int isempty();
+int peek();
+int enqueue(int);
+int dequeue();
+
+int maxsize=6;
+int queue[6];
+int rear=-1;
+int front=0;
+//for top element
+int peek()
+{
+	return queue[front];
+}
+
+//check if empty or not
+int isempty()
+{
+	if(front<0||front>rear)
+	{
+		//printf("hey");
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+//check if full or not
+int isfull()
+{
+	if(rear==maxsize-1)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+//enqueue
+int enqueue(int x)
+{
+	if(!isfull())
+	{
+		rear=rear+1;
+		queue[rear]=x;
+	//	printf("%d",queue[rear]);
+		if(rear==maxsize-1)
+		{
+			rear= -1;
+	//		printf("hey");
+		}
+	}
+	else
+	{
+		printf("Queue is full!!!!!!\n");
+	}
+}
+//dequeue
+int dequeue()
+{
+	if(!isempty())
+	{
+		
+		int k=queue[front];
+		front=front+1;
+		//printf("%d\n",k);
+			if(front==maxsize)
+		{
+			front=0;
+		}
+		return k;
+	}
+	else
+	{
+		printf("Queue is Empty!!!!!!\n");
+	}
+}
+
+int main()
+{
+	int i,a;
+	printf("Enter 6 elements in queue\n");
+	for(i=0;i<6;i++)
+	{
+		printf("Enter a number:");
+		scanf("%d",&a);
+		enqueue(a);
+	}
+	front=queue[i];
+	printf("\n");
+	printf("\nThe first element is:%d\n",peek());
+	printf("Dequeuing\n");
+	printf("\nThe elements removed in fcfs are\n");
+		for(i=0;i<6;i++)
+	{
+		//printf("Enter a number:");
+		//scanf("%d",&a);
+	int data=dequeue();
+	printf("%d\t",data);
+	}
+		printf("\nqueue full: %s\n" , isfull()?"true":"false");
+printf("\n empty: %s\n" , isempty()?"true":"false");
+}

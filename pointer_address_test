@@ -1,0 +1,9 @@
+#include<stdio.h>
+int main()
+{
+	int *ptr1,**ptr2;
+	int x=5;
+	ptr1=&x;
+	ptr2=&ptr1;
+	printf("%u\n%u\n%u",ptr1,&ptr1,ptr2);
+}

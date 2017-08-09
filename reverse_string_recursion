@@ -1,0 +1,26 @@
+#include "stdio.h"
+#include <string.h>
+char recursive(char [],int,int);
+int main()
+{
+	char name[20];
+	printf("Enter your name:");
+	scanf("%s",name);
+	int size=strlen(name);
+	recursive(name,0,size-1);
+	printf("%s",name);
+	return 0;
+}
+
+char recursive(char name[],int index,int size)
+{
+	char c;
+	c=name[index];
+	name[index]=name[size-index];
+	name[size-index]=c;
+	if(index==size/2)
+	{
+	return;
+	}
+	recursive(name,index+1,size);
+}

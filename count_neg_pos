@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,a[25],x,p=0,n=0,e=0,o=0;
+    printf("Enter a number\n");
+	scanf("%d",&x);
+	for(i=1;i<=x;i++)
+	{
+		printf("Enter value number %d :",i);
+		scanf("%d",&a[i]);
+		}
+			for(i=1;i<=x;i++)
+	{
+		if(a[i]>0||a[i]==0)
+				{
+					p++;
+					if(a[i]%2==0)
+					{
+						e++;
+						}
+						else
+						{
+							o++;
+						}
+					}
+					else if(a[i]<0)
+				{
+					n++;
+					if(a[i]%2==0)
+					{
+						e++;
+						}
+						else
+						{
+							o++;
+						}
+					}
+	}
+	printf("Even:%d\n",e);
+	printf("Odd:%d\n",o);
+	printf("Negative:%d\n",n);
+	printf("positive:%d\n",p);
+	
+	}

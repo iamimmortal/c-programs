@@ -1,0 +1,51 @@
+#include<stdio.h>
+int main()
+{
+	FILE  *fp,*fp1,*fp2;
+	int t,i;
+	int x;
+fp=fopen("number","w");
+printf("Enter numbers\n");
+    for(i=1;i<=5;i++)
+    {
+    	scanf("%d", &x);
+    	putw(x, fp);
+    	//printf("hey");
+    	}
+    //	printf("hey");
+      fclose(fp);
+      fp=fopen("number","r");
+      fp1=fopen("even","w");
+      fp2=fopen("odd","w");
+      while((t=getw(fp))!=EOF)
+      {
+      	if(t%2==0)
+      	{
+      		putw(t,fp1);
+      		}
+      		else
+      		{
+      			putw(t,fp2);
+      		}
+      	}
+      	fclose(fp);
+      	fclose(fp1);
+      	fclose(fp2);
+      	fp1=fopen("even","r");
+      fp2=fopen("odd","r");
+      		printf("The output files contents are\n");
+      	printf("The even numbers are\n");
+      while((t=getw(fp1))!=EOF)
+      	{
+      		printf("%d\t",t);
+      	}
+      	printf("\n");
+      	fclose(fp1);
+      		printf("The odd numbers are\n");
+      while((t=getw(fp2))!=EOF)
+      	{
+      		printf("%d\t",t);
+      	}
+      	fclose(fp2);
+      	return 0;
+}

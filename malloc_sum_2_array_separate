@@ -1,0 +1,58 @@
+#include<stdio.h>
+ #include<conio.h>
+ #include<stdlib.h>
+ int main()
+ {
+ int *a,*b;//*c;
+ int i,n;
+ 	printf("Enter size or number of elements of array:");
+ 	       scanf("%d",&n);
+ 	        //printf("%d",a);
+ 	       //initialising without pointer(*);
+ 	       //malloc is used so no need of
+ 	       //defining array just define size
+ 	       //of array like n
+ 	     a=(int*)calloc(n , sizeof(int));
+ 	     b=(int*)calloc(n,sizeof(int));
+ 	        // printf("%u",a);
+ 	         //   c=(int*)calloc(n , sizeof(int));
+ 	         //c is remove for optimization
+ 	            /*
+ 	              a=(int*)malloc(n*sizeof(int));
+ 	         b=(int*)malloc(n*sizeof(int));
+ 	            c=(int*)malloc(n * sizeof(int));
+ 	            for(i=0;i<n;i++)
+ 	            */
+ 	            for(i=0;i<n;i++)
+ 	            {
+ 	           	printf("Enter value for position:%d\n",i);
+ 	            	scanf("%d",a+i);
+ 	            	/*if i is not written with a then only on value is get stored in a (the first value enter by programmer) and other is get destroyed*/
+ 	           // printf("hey:%d",*a);
+ 	            
+ 	            	 
+ 	            }
+ 	           //printf("hey:%u",a);
+ 	              printf("\nFor array 2\n");
+ 	            for(i=0;i<n;i++)
+ 	            {
+ 	            	printf("Enter value for position:%d\n",i);
+ 	            	scanf("%d",b+i);
+ 	            
+ 	            }
+ 	              // printf("hey:%d",b);
+ 	            //sum
+ 	              printf("\nsum is:");
+ 	              //printf("%d",*a);
+ 	            for(i=0;i<n;i++)
+ 	            {
+ 	            	/* (*)use karte hai ki direct value dal sake and jab (*) nahi use kar te iska matlab value ko address me dalte hai*/
+ 	         //   *(c+i)=*(a+i)+*(b+i);
+ 	         //c is removed for optimization
+ 	            	printf("%d\t",*(a+i)+*(b+i));
+ 	            
+ 	            }
+ 	            //	printf("%d",*c);
+ 	            
+ 	           
+ }

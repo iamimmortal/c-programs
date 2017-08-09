@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<conio.h>
+void bubsort(int);
+void main()
+{
+	clrscr();
+	fflush(stdin);
+	int num,x;
+	//int i,t,j,n[10];
+	printf("Enter lenght of numbers:\n");
+	scanf("%d",&num);
+	bubsort(num);
+	//printf("%d",x);
+}
+void bubsort(int n1)
+{
+	int n[10],i,a,j,t;
+	printf("Enter %d numbers:\n",n1);
+	for(i=0;i<n1;i++)
+	{
+		printf("Enter number %d:\n",i+1);
+		scanf("%d",&n[i]);
+	}
+	//original order
+	for(i=0;i<n1;i++)
+	{
+		printf("%d\t",n[i]);
+	}
+	printf("\n");
+	//sorted number
+	printf("The sorted order is\n");
+	for(i=0;i<n1;i++)
+	{
+		for(j=0;j<n1-i-1;j++)
+		{
+		if(n[j]>n[j+1])
+		{
+			t=n[j+1];
+			n[j+1]=n[j];
+			n[j]=t;
+	//	swap(n[i], n[i+1]);
+			}
+//		printf("%d\t",n[i]);
+		//printf("\n");
+			
+	}
+//printf("%d\t",n[i]);
+
+	}
+	for(i=0;i<n1;i++)
+	{
+		printf("%d\t",n[i]);
+	}
+	}

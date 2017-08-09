@@ -1,0 +1,82 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct ll
+{
+	int val;
+	struct ll *next;
+}link;
+link *root=NULL;
+void insert();
+//void delete();
+void display();
+int main()
+{
+	int choice;
+	printf("Choose your operation:\n");
+	printf("\t1.Insert\n");
+	printf("\t1.Delete\n");
+	printf("\t1.Exit\n");
+	printf("\tEnter your choice\n");
+	scanf("%d",&choice);
+	//switch case
+	switch(choice)
+	{
+		case 1:
+		printf("\tAccessing insert operation\n");
+		insert();
+		display();
+		break;
+		case 2:
+	//	delete();
+	//	display();
+		break;
+		case 3:
+		exit(0);
+		break;
+		default:
+		printf("\tInvalid input\n");
+	}
+}
+//insert function
+void insert()
+{
+	link *temp,*t;
+	char ans='y';
+	while(ans=='y')
+	{
+		//printf("%c",ans);
+	temp=(link*)malloc(sizeof(link));
+		//printf("%c",ans);
+	printf("\tEnter value for node:");
+	scanf("%d",&temp->val);
+	//printf("%d",sizeof(temp));
+	temp->next=NULL;
+	if(root==NULL)
+	{
+		root=temp;
+	}
+	else
+	{
+		t=root;
+		while(t->next!=NULL)
+		{
+		t=t->next;
+		}
+		t->next=temp;
+	}
+	printf("Do you want to insert another node ?\n");
+	fflush(stdin);
+	scanf("%c",&ans);
+}
+}
+//displaying result
+void display()
+{
+	link *temp;
+	temp=root;
+	while(temp!=NULL)
+	{
+		printf("%d",temp->val);
+		temp=temp->next;
+	}
+}

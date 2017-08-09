@@ -1,0 +1,54 @@
+#include "stdio.h"
+#include "conio.h"
+//structure definition
+struct phonebook
+{
+	char *fname;
+	char *lname;
+	int *id;
+ int *number;
+};
+//main method
+int main()
+{
+	struct phonebook pb;
+	int i,n;
+	printf("\nEnter number of records:\n");
+	scanf("%d",&n);
+	//malloc for fname
+pb.fname=(char*)malloc(n*sizeof(char));
+pb.lname=
+	(char*)malloc(n*sizeof(char));
+	//malloc for lname
+//pb.lname=
+		//(char*)malloc(n*sizeof(char));
+		//malloc for number
+pb.number=
+	(int*)malloc(n*sizeof(int));
+	//malloc for id
+	pb.id=
+	(int*)malloc(n*sizeof(int));
+	//entering details
+	for(i=0;i<n;i++)
+	{
+		printf("\nEnter first name:");
+		scanf("%s",(pb.fname+i));
+		printf("%s",(pb.fname+i));
+	//	printf("\nEnter last name:");
+		//scanf("%s",pb.lname+i);
+		printf("\nEnter id:");
+		scanf("%d",(pb.id+i));
+		printf("\nEnter number:");
+		scanf("%d",(pb.number+i));
+	}
+	//printf("%s",(pb.fname+i));
+	//displaying  details
+	for(i=0;i<n;i++)
+	{
+		//for displaying string using pointer never use *
+		printf("\nid:%d",*(pb.id+i));
+	printf("\nname:%s",(pb.fname+i));
+	printf("\nnumber:%d",*(pb.number+i));
+		
+	}
+}

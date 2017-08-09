@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int sp,cp,temp;
+	printf("Enter selling and cost price:\n");
+	scanf("%d%d",&sp,&cp);
+	temp=sp-cp;
+	if(temp>0)
+	{
+		printf("Profit of rupees:%d",temp);
+		}
+else if(temp<0)
+	{
+		printf("Loss of rupees:%d",temp);
+		}
+		else
+		{
+			printf("Niether profit Nor loss");}
+		
+}

@@ -1,0 +1,22 @@
+#include<stdio.h>
+void reverse(char * );
+void main()
+{
+	int x,i,j;
+//	int *ptr;
+	char name[20];
+	printf("Enter your name\n");
+	scanf("%s",name);
+	//ptr=&name;
+	reverse(name);
+}
+void reverse(char *name)
+{
+	int x,i;
+	x=strlen(name);
+//	printf("%d",x);
+	for(i=x-1;name[i]!='\0';i--)
+	{
+		printf("%c",name[i]);
+	}
+}

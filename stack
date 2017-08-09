@@ -1,0 +1,99 @@
+#include<stdio.h>
+
+int max=2;
+int stack[2];
+top=-1;
+//check stack is full or not
+int full()
+{
+	if(top==max)
+	{
+		return 1;
+	}
+	
+	else
+	{
+		return 0;
+	}
+}
+
+//check stack empty or not
+int empty()
+{
+	if(top==-1)
+	{
+		return 1;
+	}
+	
+	else
+	{
+		return 0;
+	}
+}
+
+//finding top element 
+int peek()
+{
+	int x=stack[top];
+return x;
+}
+
+//push fuction
+
+int push(int a)
+{
+	if(!full())
+	{
+	top=top+1;
+	stack[top]=a;
+	}
+	else
+	{
+		printf("stack is full");
+	}
+}
+
+//pop fuction
+
+int pop()
+{
+	int data;
+	if(!empty())
+	{
+	data=stack[top]	;
+	top=top-1;
+	return data;
+//	printf("the pop values are:\n",data);
+	}
+	else
+	{
+		printf("Stack is empty");
+	}
+}
+
+int main()
+{
+	//clrscr();
+	//pushing or inserting data
+	while(!full()) {
+		int n;
+		printf("Enter number to push into stack at position %d:",top+1);
+		scanf("%d",&n);
+push(n);
+}
+
+//print top element
+	printf("\nThe element at the top of the stack:%d",peek());
+	printf("\n");
+	
+	//pop out element
+	while(!empty()) {
+int data = pop();
+printf("%d\n",data);
+}
+	
+	printf("\nStack full: %s\n" , full()?"true":"false");
+printf("\nStack empty: %s\n" , empty()?"true":"false");
+
+return 0;
+}
